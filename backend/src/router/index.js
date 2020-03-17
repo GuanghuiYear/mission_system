@@ -67,7 +67,42 @@ export const asyncRouterMap = [
         path: 'admin-log',
         name: 'system-admin-log',
         component: () => import('@/views/system/admin-log'),
-        meta: { title: '操作日志', icon: 'log',
+        meta: { title: '操作日志1', icon: 'log',
+          permissions: ['admin-logs.index'] }
+      }
+    ]
+  },
+  {
+    path: '/mission',
+    component: Layout,
+    meta: { title: '任务管理', icon: 'mission' },
+    children: [
+      {
+        path: 'mission-underway',
+        name: 'underway',
+        component: () => import('@/views/mission/underway'),
+        meta: { title: '进行中任务', icon: 'role',
+          permissions: ['roles.index', 'roles.update', 'roles.destroy', 'roles.store'] }
+      },
+      {
+        path: 'admin',
+        name: 'system-admin',
+        component: () => import('@/views/system/admin'),
+        meta: { title: '超时任务', icon: 'admin',
+          permissions: ['admins.index', 'admins.update', 'admins.store'] }
+      },
+      {
+        path: 'admin-log',
+        name: 'system-admin-log',
+        component: () => import('@/views/system/admin-log'),
+        meta: { title: '已完结任务', icon: 'log',
+          permissions: ['admin-logs.index'] }
+      },
+      {
+        path: 'admin-log2',
+        name: 'performance-appraisal',
+        component: () => import('@/views/system/admin-log'),
+        meta: { title: '人员完成率绩效评估', icon: 'log',
           permissions: ['admin-logs.index'] }
       }
     ]
